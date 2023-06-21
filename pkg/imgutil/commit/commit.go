@@ -48,7 +48,7 @@ import (
 )
 
 type Changes struct {
-	CMD, Entrypoint []string
+	ENV, CMD, Entrypoint []string
 }
 
 type Opts struct {
@@ -191,6 +191,9 @@ func generateCommitImageConfig(ctx context.Context, container containerd.Contain
 	}
 	if opts.Changes.Entrypoint != nil {
 		baseConfig.Config.Entrypoint = opts.Changes.Entrypoint
+	}
+	if opts.Changes.ENV != nil {
+		baseConfig.Config.Env = opts.Changes.Entrypoint
 	}
 	if opts.Author == "" {
 		opts.Author = baseConfig.Author
