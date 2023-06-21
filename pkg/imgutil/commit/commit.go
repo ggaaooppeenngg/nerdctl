@@ -193,7 +193,7 @@ func generateCommitImageConfig(ctx context.Context, container containerd.Contain
 		baseConfig.Config.Entrypoint = opts.Changes.Entrypoint
 	}
 	if opts.Changes.ENV != nil {
-		baseConfig.Config.Env = opts.Changes.Entrypoint
+		baseConfig.Config.Env = opts.Changes.ENV
 	}
 	if opts.Author == "" {
 		opts.Author = baseConfig.Author
